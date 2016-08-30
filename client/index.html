@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script   src="https://code.jquery.com/jquery-3.1.0.js"   integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="   crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<script type="text/javascript" >
+		$(function () {
+			$('#getData').click(function(){
+				$.get('/getJson', function(users){
+					var usersHtml = users.map(function(user){
+						return '<tr> <td>'+user.id+' </td><td>' + user.name + ' </td><td>' + user.age + ' </td>  </tr>'
+					})
+					var html = usersHtml.join('')
+					$('#myData').append(html)
+				})
+			})
+		})
+	</script>
+
+	<title>test page</title>
+</head>
+<body>
+	<!-- !!!!!! Сюда не смотри, это для красоты))) -->
+	<nav class="navbar navbar-default">
+	  <div class="container">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">Brand</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+	        <li><a href="#">Link</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+
+	<!-- !!!!!! до Сюда не смотри, это для красоты))) -->
+	<div class="container">
+		<div class="row">
+			<button id="getData" class="btn btn-default col-xs-4 col-xs-offset-4">get data</button>
+		</div>
+		<div class="row">
+			<table id="myData" class="table">
+				<thead>
+					<tr>
+						<td>#</td>
+						<td>COL 1</td>
+						<td>COL 2</td>
+					</tr>
+				</thead>
+				<tbody id="my-data" class="table-hover">
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
