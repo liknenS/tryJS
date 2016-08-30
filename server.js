@@ -25,10 +25,6 @@ var mySimpleDataBase = {
 	}
 }
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-
 app.get('/getJson', function (req, res) {
   mySimpleDataBase.query('SELECT * FROM users', function(dataBaseResponse){
   	res.send(dataBaseResponse);
